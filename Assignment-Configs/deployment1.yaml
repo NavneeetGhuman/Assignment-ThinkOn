@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: users-deployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: users-deployment
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx-demo
+        image: nginx
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
