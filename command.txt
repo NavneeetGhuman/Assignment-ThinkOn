@@ -1,9 +1,0 @@
-kubectl apply -f deployment.yaml
-
-kubectl apply -f hpa.yaml
-
-Rollover: kubectl set image deployment/deployment-1 nginx:1.16.1 
-
-Rollout status: kubectl rollout status deployment/deployment-1
-
-Rolling Back: kubectl rollout undo deployment/deployment-1
